@@ -1,0 +1,11 @@
+[Unit]
+Description="Convention Notify Service"
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/matrix/service/convention-notify
+ExecStart=/home/matrix/service/convention-notify/target/release/convention-notify
+
+[Install]
+WantedBy=multi-user.target

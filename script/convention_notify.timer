@@ -1,0 +1,11 @@
+[Unit]
+Description="convention notify daily check"
+After=network.target
+
+[Timer]
+OnCalendar=*-*-* 07:30:00
+AccuracySec=30m
+Unit=convention_notify.service
+
+[Install]
+WantedBy=multi-user.target
