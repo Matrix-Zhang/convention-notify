@@ -129,7 +129,7 @@ fn main() {
     let mut url =
         Url::parse("http://www.neccsh.com/cecsh/exhibitioninfo/exhibitionlist.jspx").unwrap();
 
-    println!("start conventions check.")
+    println!("start conventions check.");
 
     for i in 1..6 {
         url.set_query(Some(&format!("pageNo={}", i)));
@@ -147,7 +147,7 @@ fn main() {
         conventions.reverse();
         let cache = Cache::load();
         for convention in conventions {
-            if convention.time.0 >= today || convention.time.1 <= today {
+            if today >= convention.time.0 || convention.time.1 <= today {
                 if today > cache {
                     let config = Config::load();
                     let mut dayu = Dayu::new();
