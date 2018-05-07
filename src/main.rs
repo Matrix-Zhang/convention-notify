@@ -14,7 +14,7 @@ mod cache;
 mod config;
 
 use cache::Cache;
-use chrono::{Local, NaiveDate, Duration};
+use chrono::{Duration, Local, NaiveDate};
 use config::Config;
 use dayu::Dayu;
 use libxml::parser::Parser;
@@ -148,6 +148,11 @@ fn main() {
         let cache = Cache::load();
         for convention in conventions {
             if today >= convention.time.0 - Duration::days(1) || convention.time.1 <= today {
+                println!(
+                    "today: {:?}, convention's time: {:?}",
+                    today, convention.time
+                );
+
                 if today > cache {
                     let config = Config::load();
                     let mut dayu = Dayu::new();

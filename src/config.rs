@@ -13,9 +13,12 @@ pub struct Config {
 
 impl Config {
     pub fn load() -> Config {
-        let mut file = File::open("config.toml").unwrap();
-        let mut config = String::new();
-        file.read_to_string(&mut config).unwrap();
-        toml::from_str(&config).unwrap()
+        File::open("config.toml")
+            .and_then(|mut file| {
+                let mut config = String::new();
+                file.read_to_string(&mut config)
+                    .map(|_| toml::from_str(&config).expect("toml load fail."))
+            })
+            .expect("open config.toml failed.")
     }
 }
