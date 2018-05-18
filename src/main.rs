@@ -166,7 +166,7 @@ fn main() {
                     dayu.set_access_key(&config.access_key);
                     dayu.set_access_secret(&config.access_secret);
                     dayu.set_sign_name(&config.sign_name);
-                    dayu.sms_send(&config.phones[..], "SMS_133960571", Some(&value))
+                    dayu.sms_send(&config.phones[..], "SMS_135031910", Some(&value))
                         .unwrap();
 
                     Cache::save(convention.time.1);
